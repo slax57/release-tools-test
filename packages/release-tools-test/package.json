@@ -1,13 +1,14 @@
 {
   "name": "@slax57/release-tools-test",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Dummy package to test scripted release tools",
   "main": "index.js",
   "scripts": {
     "build": "echo 'built!'",
     "prepublishOnly": "../../scripts/pre-publish.sh",
-    "postpublish": "../../scripts/post-publish.sh"
+    "postpublish": "echo 'HERE' && ../../scripts/post-publish.sh"
   },
   "author": "slax57",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "0457bac18a5d783cd9999ce6fa23deb293a345c9"
 }
