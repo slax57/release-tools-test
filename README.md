@@ -1,3 +1,3 @@
 # release-tools-test
 
-Dummy package to test scripted release tools
+Repository to test scripted release tools
