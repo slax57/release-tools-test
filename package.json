@@ -4,8 +4,20 @@
   "description": "Dummy package to test scripted release tools",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update-changelog": "tsx scripts/update-changelog.ts",
+    "update-milestones": "tsx scripts/update-milestones.ts",
+    "create-github-release": "tsx scripts/create-github-release.ts"
   },
   "author": "slax57",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@octokit/core": "^6.1.4",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.7",
+    "lerna": "~7.1.3",
+    "lodash": "^4.17.21",
+    "tsx": "^4.19.2",
+    "typescript": "^5.1.3"
+  }
 }
