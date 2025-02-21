@@ -66,11 +66,11 @@ const fetchMilestonePrs = async (milestone_number: string) => {
         200
     >;
     try {
-        milestone_prs = await octokit.request('GET /search/issues', {
-            q: `repo:marmelab/react-admin is:pr milestone:${milestone_number}`,
-            headers: {
-                'X-GitHub-Api-Version': '2022-11-28',
-            },
+        milestone_prs = await octokit.request("GET /search/issues", {
+          q: `repo:slax57/release-tools-test is:pr milestone:${milestone_number}`,
+          headers: {
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
         });
     } catch (error) {
         console.error(

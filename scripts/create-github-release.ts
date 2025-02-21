@@ -32,38 +32,36 @@ const main = async () => {
 
     console.log(`Fetching latest releases`);
     const releases = await octokit.request(
-        'GET /repos/{owner}/{repo}/releases',
-        {
-            owner: 'marmelab',
-            repo: 'react-admin',
-        }
+      "GET /repos/{owner}/{repo}/releases",
+      {
+        owner: "slax57",
+        repo: "release-tools-test",
+      }
     );
 
     const alreadyExistingRelease = releases.data.find(
-        release => release.tag_name === tag_name
+      (release) => release.tag_name === tag_name
     );
 
     if (alreadyExistingRelease) {
-        console.log(`Release ${version} already exists.`);
-        return;
+      console.log(`Release ${version} already exists.`);
+      return;
     }
 
     console.log(`Parsing changelog for release ${version}`);
 
     // Read the changelog file
-    const changelogFilePath = path.join(__dirname, '../CHANGELOG.md');
-    const changelogContent = fs.readFileSync(changelogFilePath, 'utf-8');
+    const changelogFilePath = path.join(__dirname, "../CHANGELOG.md");
+    const changelogContent = fs.readFileSync(changelogFilePath, "utf-8");
 
     // Create a regular expression to capture the changelog entries for the specified version
     const safeVersion = escapeRegExp(version);
-    const regex = new RegExp(`## ${safeVersion}\n\n([\\s\\S]*?)\n##`, 'g');
+    const regex = new RegExp(`## ${safeVersion}\n\n([\\s\\S]*?)\n##`, "g");
     const match = regex.exec(changelogContent);
 
     if (!match) {
-        console.error(
-            `Could not find changelog entries for version ${version}`
-        );
-        process.exit(1);
+      console.error(`Could not find changelog entries for version ${version}`);
+      process.exit(1);
     }
 
     const changelogEntries = match[1].trim();
@@ -71,25 +69,25 @@ const main = async () => {
     console.log(`Creating release ${version} from tag ${tag_name}`);
 
     if (process.env.RELEASE_DRY_RUN) {
-        console.log(
-            'Would have called GitHub API with',
-            'POST /repos/{owner}/{repo}/releases',
-            {
-                owner: 'marmelab',
-                repo: 'react-admin',
-                tag_name,
-                name: version,
-                body: changelogEntries,
-            }
-        );
+      console.log(
+        "Would have called GitHub API with",
+        "POST /repos/{owner}/{repo}/releases",
+        {
+          owner: "slax57",
+          repo: "release-tools-test",
+          tag_name,
+          name: version,
+          body: changelogEntries,
+        }
+      );
     } else {
-        await octokit.request('POST /repos/{owner}/{repo}/releases', {
-            owner: 'marmelab',
-            repo: 'react-admin',
-            tag_name,
-            name: version,
-            body: changelogEntries,
-        });
+      await octokit.request("POST /repos/{owner}/{repo}/releases", {
+        owner: "slax57",
+        repo: "release-tools-test",
+        tag_name,
+        name: version,
+        body: changelogEntries,
+      });
     }
 
     console.log(`Release ${version} created successfully.`);
