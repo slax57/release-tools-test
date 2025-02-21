@@ -4,9 +4,7 @@
   "description": "Dummy package to test scripted release tools",
   "main": "index.js",
   "scripts": {
-    "build": "echo 'built!'",
-    "prepublishOnly": "../../scripts/pre-publish.sh",
-    "postpublish": "echo 'HERE' && ../../scripts/post-publish.sh"
+    "build": "echo 'built!'"
   },
   "author": "slax57",
   "license": "ISC",
