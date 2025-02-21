@@ -1,0 +1,12 @@
+{
+  "name": "@slax57/release-tools-test",
+  "version": "0.0.1",
+  "description": "Dummy package to test scripted release tools",
+  "main": "index.js",
+  "scripts": {
+    "prepublishOnly": "../../scripts/pre-publish.sh",
+    "postpublish": "../../scripts/post-publish.sh"
+  },
+  "author": "slax57",
+  "license": "ISC"
+}

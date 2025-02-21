@@ -1,10 +1,9 @@
 {
-  "name": "@slax57/release-tools-test",
-  "version": "0.0.1",
+  "private": true,
+  "name": "release-tools-test-monorepo",
   "description": "Dummy package to test scripted release tools",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "update-changelog": "tsx scripts/update-changelog.ts",
     "update-milestones": "tsx scripts/update-milestones.ts",
     "create-github-release": "tsx scripts/create-github-release.ts"
@@ -19,5 +18,8 @@
     "lodash": "^4.17.21",
     "tsx": "^4.19.2",
     "typescript": "^5.1.3"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

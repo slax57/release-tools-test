@@ -12,6 +12,7 @@ step() {
 }
 
 info "Running post-publish script for version ${npm_package_version}"
+cd ../..
 
 step "update-milestones"
 yarn run update-milestones ${npm_package_version}

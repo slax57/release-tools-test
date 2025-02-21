@@ -12,6 +12,7 @@ step() {
 }
 
 info "Running pre-publish script for version ${npm_package_version}"
+cd ../..
 
 step "update-changelog"
 yarn run update-changelog ${npm_package_version}
