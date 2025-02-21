@@ -4,6 +4,7 @@
   "description": "Dummy package to test scripted release tools",
   "main": "index.js",
   "scripts": {
+    "build": "lerna run build",
     "update-changelog": "tsx scripts/update-changelog.ts",
     "update-milestones": "tsx scripts/update-milestones.ts",
     "create-github-release": "tsx scripts/create-github-release.ts"
