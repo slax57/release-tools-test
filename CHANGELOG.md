@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.5
+
+* Feature 4 ([#4](https://github.com/slax57/release-tools-test/pull/4)) ([slax57](https://github.com/slax57))
+
 ## 0.0.4
 
 * Feature 3 ([#3](https://github.com/slax57/release-tools-test/pull/3)) ([slax57](https://github.com/slax57))
