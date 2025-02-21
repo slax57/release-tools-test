@@ -1,6 +1,6 @@
 {
   "name": "@slax57/release-tools-test",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Dummy package to test scripted release tools",
   "main": "index.js",
   "scripts": {
