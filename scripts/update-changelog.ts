@@ -120,58 +120,58 @@ const writeChangelog = (changelogContent: string) => {
 };
 
 const main = async () => {
-    if (process.env.RELEASE_DRY_RUN) {
-        console.log('Dry run mode is enabled');
-    }
+  if (process.env.RELEASE_DRY_RUN) {
+    console.log("Dry run mode is enabled");
+  }
 
-    if (!process.env.GITHUB_ACCESS_TOKEN) {
-        console.error(
-            'Please provide the GITHUB_ACCESS_TOKEN variable in the .env file'
-        );
-        process.exit(1);
-    }
-
-    const milestone_number = process.argv[2];
-
-    if (
-        !milestone_number ||
-        !milestone_number.match(/^\d{1,2}\.\d{1,2}\.\d{1,2}$/)
-    ) {
-        console.error(`Invalid milestone provided: ${milestone_number}`);
-        console.error('Usage: yarn run update-changelog <milestone>');
-        process.exit(1);
-    }
-
-    console.log(`Generating changelog for version ${milestone_number}...`);
-
-    const items = await fetchMilestonePrs(milestone_number);
-
-    items.sort(sortPrEntries);
-
-    const changelogContent = generateChangelogContent(milestone_number, items);
-
-    if (process.env.RELEASE_DRY_RUN) {
-        console.log('Would have added the following entries to the changelog');
-        console.log(changelogContent);
-    } else {
-        writeChangelog(changelogContent);
-    }
-
-    console.log('Changelog updated successfully.');
-
-    // Prompt the user to check the changelog
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
-
-    console.log(
-        'Please review the ./CHANGELOG.md file and update it if needed.'
+  if (!process.env.GITHUB_ACCESS_TOKEN) {
+    console.error(
+      "Please provide the GITHUB_ACCESS_TOKEN variable in the .env file"
     );
-    rl.question('Press Enter when done: ', () => {
-        console.log('Resuming release...');
-        rl.close();
-    });
+    process.exit(1);
+  }
+
+  const milestone_number = process.argv[2];
+
+  if (
+    !milestone_number ||
+    !milestone_number.match(/^\d{1,2}\.\d{1,2}\.\d{1,2}$/)
+  ) {
+    console.error(`Invalid milestone provided: ${milestone_number}`);
+    console.error("Usage: yarn run update-changelog <milestone>");
+    process.exit(1);
+  }
+
+  console.log(`Generating changelog for version ${milestone_number}...`);
+
+  const items = await fetchMilestonePrs(milestone_number);
+
+  items.sort(sortPrEntries);
+
+  const changelogContent = generateChangelogContent(milestone_number, items);
+
+  if (process.env.RELEASE_DRY_RUN) {
+    console.log("Would have added the following entries to the changelog");
+    console.log(changelogContent);
+  } else {
+    writeChangelog(changelogContent);
+  }
+
+  console.log("Changelog updated successfully.");
+
+  // // Prompt the user to check the changelog
+  // const rl = readline.createInterface({
+  //     input: process.stdin,
+  //     output: process.stdout,
+  // });
+
+  // console.log(
+  //     'Please review the ./CHANGELOG.md file and update it if needed.'
+  // );
+  // rl.question('Press Enter when done: ', () => {
+  //     console.log('Resuming release...');
+  //     rl.close();
+  // });
 };
 
 main();
